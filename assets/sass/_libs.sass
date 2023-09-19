@@ -1,0 +1,323 @@
+// // swiper scrollbar 
+// .swiper-horizontal>.swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal
+//     height: 2px
+//     position: initial
+//     left: initial
+//     bottom: initial
+
+// .swiper-scrollbar
+//     background: #818696
+//     border-radius: 0
+//     margin-right: 15px
+
+// .swiper-scrollbar-drag
+//     background: #fff
+//     border-radius: 0
+
+// // swiper buttons
+// .swiper-nav
+//     margin-top: 30px
+//     position: initial
+//     bottom: initial
+//     flex-direction: row-reverse
+//     align-items: center
+//     &.position
+//         position: absolute
+//         z-index: 1
+//         left: 0
+//         right: 0
+//         width: 100%
+//         padding: 0 15px
+
+// .swiper-buttons
+//     display: flex
+//     flex-direction: row-reverse
+//     height: 24px
+//     align-items: flex-end
+
+// .swiper-button-next, .swiper-button-prev
+//     position: initial
+//     top: inherit
+//     display: flex
+//     align-items: center
+//     justify-content: center
+//     width: 24px
+//     height: 24px
+//     transition: all .3s
+//     svg rect
+//         transition: all .3s
+//     &::after
+//         display: none
+//     &:hover svg rect
+//         fill: $primary - #111
+//     &:active
+//         transform: translateY(3px)
+
+// .swiper-button-prev
+//     margin-right: 15px
+
+// // swiper buttons end
+
+// // для элемента input c type="checkbox" 
+// .custom-checkbox
+//     position: absolute
+//     z-index: -1
+//     opacity: 0
+//     // для элемента label, связанного с .custom-checkbox 
+//     &+label
+//         display: inline-flex
+//         align-items: flex-start
+//         user-select: none
+//         text-transform: lowercase
+//         cursor: pointer
+//     // создание в label псевдоэлемента before со следующими стилями 
+//     &+label::before
+//         content: ''
+//         display: inline-block
+//         width: 1em
+//         height: 1em
+//         flex-shrink: 0
+//         flex-grow: 0
+//         border: 1px solid #adb5bd
+//         border-radius: 0.25em
+//         margin-right: 0.5em
+//         background-repeat: no-repeat
+//         background-position: center center
+//         background-size: 50% 50%
+//     // стили при наведении курсора на checkbox 
+//     &:not(:disabled):not(:checked)+label:hover::before
+//         border-color: #b3d7ff
+//     // стили для активного чекбокса (при нажатии на него) 
+//     &:not(:disabled):active+label::before
+//         background-color: #b3d7ff
+//         border-color: #b3d7ff
+//     // стили для чекбокса, находящегося в фокусе 
+//     &:focus+label::before
+//         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+//     // стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked 
+//     &:focus:not(:checked)+label::before
+//         border-color: #80bdff
+//     // стили для чекбокса, находящегося в состоянии checked 
+//     &:checked+label::before
+//         border-color: #0b76ef
+//         background-color: #0b76ef
+//         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+//     // стили для чекбокса, находящегося в состоянии disabled 
+//     &:disabled+label::before
+//         background-color: #e9ecef
+
+// .checkbox
+//     margin-bottom: 1em
+
+// /**  floating-Lable style start **/
+// .floating-label
+//     position: relative
+//     margin-bottom: 20px
+//     label
+//         line-height: 21px
+//         color: #E2E2E9
+//         font-size: inherit
+//         font-weight: normal
+//         position: absolute
+//         pointer-events: none
+//         left: 20px
+//         top: 15px
+//         transition: 0.2s ease all
+
+// .floating-input
+//     font-size: inherit
+//     padding: 15px 20px 8px
+//     display: block
+//     width: 100%
+//     height: 51px
+//     background-color: #176AB7
+//     color: #fff
+//     border-radius: 4px
+//     border: none
+
+// .floating-input:focus,
+// .floating-select:focus
+//     outline: none
+
+// .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label
+//     top: 0px
+//     font-size: 9px
+//     color: #fff
+
+// .floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label
+//     top: -18px
+//     font-size: inherit
+//     color: #fff
+
+// .floating-textarea
+//     min-height: 30px
+//     max-height: 260px
+//     overflow: hidden
+//     overflow-x: hidden
+
+// // floating label  error
+// .floating-input.error ~ label
+//     color: #EB2452
+
+// /** filter start **/
+// .wpc-term-item-content-wrapper input[type="checkbox"]
+//     position: absolute
+//     z-index: -1
+//     opacity: 0
+//     // для элемента label, связанного с .custom-checkbox 
+//     &+label
+//         display: inline-flex
+//         align-items: flex-start
+//         user-select: none
+//         text-transform: lowercase
+//     // создание в label псевдоэлемента before со следующими стилями 
+//     &+label::before
+//         content: ''
+//         display: inline-block
+//         width: 16px
+//         height: 16px
+//         margin-top: 1px
+//         flex-shrink: 0
+//         flex-grow: 0
+//         border: 1px solid #010719
+//         border-radius: 2px
+//         margin-right: 0.5em
+//         background-repeat: no-repeat
+//         background-position: center center
+//         background-size: contain
+//         transition: all .3s
+
+//     // стили при наведении курсора на checkbox 
+
+//     &:not(:disabled):not(:checked)+label:hover::before
+//         border-color: #b3d7ff
+
+//     // стили для активного чекбокса (при нажатии на него) 
+
+//     &:not(:disabled):active+label::before
+//         background-color: #b3d7ff
+//         border-color: #b3d7ff
+
+//     // стили для чекбокса, находящегося в фокусе 
+
+//     &:focus+label::before
+//         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+
+//     // стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked 
+
+//     &:focus:not(:checked)+label::before
+//         border-color: #80bdff
+
+//     // стили для чекбокса, находящегося в состоянии checked 
+
+//     &:checked+label::before
+//         border-color: #0b76ef
+//         background-color: #0b76ef
+//         background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4.3L3.68775 7L9 1' stroke='white' stroke-linecap='round'/%3E%3C/svg%3E")
+
+//     // стили для чекбокса, находящегося в состоянии disabled 
+
+//     &:disabled+label::before
+//         background-color: #e9ecef
+
+// .widget-area li.wpc-term-item label, .wpc-filters-widget-main-wrapper li.wpc-term-item label
+//     padding-left: 0 !important
+
+// #top .widget ul.wpc-filters-ul-list, .widget-area ul.wpc-filters-ul-list, .wpc-filters-widget-main-wrapper ul.wpc-filters-ul-list
+//     padding: 0 !important
+
+// .wpc-term-item-content-wrapper input[type="radio"]
+//     position: absolute
+//     z-index: -1
+//     opacity: 0
+//     &+label
+//         display: inline-flex
+//         align-items: center
+//         user-select: none
+//     &+label::after
+//         position: absolute
+//         content: ''
+//         width: 8px
+//         height: 8px
+//         border-radius: 50%
+//         top: 6px
+//         left: 4px
+//         background-color: $primary
+//         transform: scale(0)
+//         transition: all .3s
+//     &+label::before
+//         position: relative
+//         content: ''
+//         display: inline-block
+//         width: 16px
+//         height: 16px
+//         flex-shrink: 0
+//         flex-grow: 0
+//         border: 1px solid #010719
+//         border-radius: 50%
+//         margin-right: 0.5em
+//     &:not(:disabled):not(:checked)+label:hover::before
+//         border-color: #b3d7ff
+
+//     &:not(:disabled):active+label::before
+//         background-color: #b3d7ff
+//         border-color: #b3d7ff
+
+//     &:checked+label::after
+//         transform: scale(1)
+
+//     &:focus+label::before
+//         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+
+//     &:focus:not(:checked)+label::before
+//         border-color: #80bdff
+
+//     &:disabled+label::before
+//         background-color: #e9ecef
+
+// .wpc-filter-title
+//     position: relative
+//     &::before
+//         content: ""
+//         position: absolute
+//         right: 0
+//         top: -3px
+//         background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 13.5L12 9.5L8 13.5' stroke='%23ABABBA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A")
+//         background-repeat: no-repeat
+//         background-size: cover
+//         background-position: center center
+//         width: 24px
+//         height: 24px
+//         transition: all .3s
+
+// .wpc-filter-container_category
+//     height: auto
+//     overflow: visible
+//     transition: all .3s
+
+// .wpc-filter-header.close .wpc-filter-title::before
+//     transform: matrix(1, 0, 0, -1, 0, 0)
+
+// .wpc-filter-header.close ~ .wpc-filter-content
+//     height: 0
+//     overflow: hidden
+
+// /** filter end **/ 
+
+// /**  fancybox **/ 
+// .fancybox__content :focus:not(.carousel__button.is-close)
+//     outline: none
+
+// .fancybox__content>.carousel__button.is-close
+//     top: 15px
+//     right: 15px
+
+// .carousel__button
+//     width: 20px
+//     height: 20px
+//     transition: all .3s
+//     &:active
+//         transform: translateY(3px)
+//     svg
+//         filter: none
+//         stroke: #ABABBA

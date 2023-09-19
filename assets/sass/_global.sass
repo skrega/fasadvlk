@@ -1,0 +1,108 @@
+html,
+body
+	height: 100%
+
+body
+	font-family: 'Inter', sans-serif
+	font-size: 16px
+	font-weight: 400
+	line-height: 140%
+	letter-spacing: -0.48px
+	color: $black
+	background-color: #EDF1F4
+
+button
+	border: none
+	background-color: transparent
+	color: inherit
+	cursor: pointer
+
+.wrapper
+	display: flex
+	flex-direction: column
+	min-height: 100%
+
+.main
+	flex: 1 0 auto
+
+.footer
+	flex: 0 0 auto
+
+.container
+	padding: 0 15px
+
+.d-flex
+	display: flex
+
+.menu-btn
+	width: 30px
+	height: 20px
+	position: relative
+	transform: rotate(0deg)
+	transition: background-color .5s ease-in-out
+	cursor: pointer
+	z-index: 101
+	span
+		display: block
+		position: absolute
+		height: 2px
+		width: 100%
+		background: $primary
+		border-radius: 9px
+		opacity: 1
+		top: 0
+		right: 0px
+		transform: rotate(0deg)
+		transition: transform .25s ease-in-out
+	span:nth-child(2)
+		top: 9px
+		margin-right: auto
+		transition: right .25s ease-in-out, opacity .25s ease-in-out
+	span:nth-child(3)
+		top: 18px
+
+.menu-btn.open
+	span:nth-child(1)
+		top: 8px
+		transform: rotate(135deg)
+	span:nth-child(2)
+		opacity: 0
+		right: -60px
+	span:nth-child(3)
+		top: 8px
+		transform: rotate(-135deg)
+
+.btn
+	display: inline-flex
+	justify-content: center
+	align-items: center
+	padding: 14px 30px
+	background-color: transparent
+	border-radius: 4px
+	font-weight: 600
+	font-size: 16px
+	line-height: 19px
+	color: $black
+	border: 2px solid $primary
+	cursor: pointer
+	text-transform: uppercase
+	transition: all 0.3s ease-in-out
+	&:active
+		color: #fff
+		background-color: #176AB7
+		border-color: #176AB7
+
+.btn-primary
+	background-color: $primary
+	color: #fff
+
+.not-found
+	&__inner
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+	&__title
+		font-size: 80px
+		line-height: 98px
+		margin-bottom: 24px

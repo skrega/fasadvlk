@@ -6,6 +6,252 @@
 @import 'mixin'
 
 // header start
-// header end
+.header
+    position: sticky
+    top: 0
+    right: 0
+    left: 0
+    width: 100%
+    z-index: 11
+    background-color: $primary
+    color: #fff
+    &-top
+        padding: 10px 0
+        border-bottom: 1px solid #DEEDFF
 
+    &__inner
+        display: flex
+        align-items: center
+        justify-content: space-between
+    &-col
+        display: flex
+        align-items: center
+        font-weight: 600
+        grid-gap: 30px
+    &__info
+        grid-gap: 20px
+    &-bottom
+        padding: 16px 0
+    &-cart
+        padding: 11px 18px
+        border-radius: 8px
+        border: 2px solid #fff
+        display: flex
+        align-items: center
+        grid-gap: 10px
+        font-weight: 600
+        line-height: 19px
+
+.header.transparent
+    color: #fff
+    position: fixed
+    background-color: transparent
+
+.top
+    height: 100vh
+    background-size: cover
+    background-repeat: no-repeat
+    position: relative
+    &::before
+        position: absolute
+        content: ''
+        left: 0
+        right: 0
+        bottom: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: linear-gradient(0deg, rgba(2, 13, 38, 0.60) 0%, rgba(2, 13, 38, 0.60) 100%)
+        opacity: 0.7
+        z-index: 0
+    &__wrapper
+        position: relative
+        padding-top: 31.105vh
+        z-index: 3
+        color: #fff
+    &__inner
+        display: flex
+        align-items: center
+        flex-direction: column
+        justify-content: center
+        grid-gap: 40px
+        text-align: center
+        margin-bottom: 10.174vh
+    &__title
+        max-width: 575px
+        width: 100%
+        margin: 0 auto
+        font-size: 60px
+        font-weight: 600
+        line-height: 110%
+        letter-spacing: -2.7px
+    &__text
+        font-weight: 400
+
+.top-categories
+    display: grid
+    grid-template-columns: repeat(7,1fr)
+    grid-gap: 16px
+
+.top-category-item
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    grid-gap: 15px
+    &__img
+        width: 120px
+        height: 120px
+        border-radius: 50%
+        overflow: hidden
+    &__name
+        font-weight: 600
+        line-height: 120%
+        letter-spacing: -0.48px
+        text-align: center
+
+.home-catalog__inner
+    display: grid
+    grid-template-columns: 288px 1fr
+.home-catalog-sidebar
+    padding: 20px
+    background-color: #fff
+    border-radius: 16px
+.home-catalog-sidebar__item
+    padding: 15px
+    border-radius: 8px
+    font-weight: 600
+    cursor: pointer
+    &:not(:last-child)
+        margin-bottom: 5px
+    &.active
+        background-color: $primary
+        color: #fff
+
+.services
+    &__inner
+        background-color: $primary
+        padding: 40px
+        border-radius: 16px
+    &__title
+        color: #fff
+    &__items
+        display: grid
+        grid-template-columns: repeat(2,1fr)
+        grid-gap: 16px
+    &__li:not(:last-child)
+        margin-bottom: 5px
+    &__link
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 10px 20px
+        color: $primary
+        font-weight: 600
+        background-color: $primary-700
+        border-radius: 8px
+
+.services-item
+    padding: 30px 20px 20px
+    border-radius: 8px
+    background-color: #fff
+
+.about
+    &__inner
+        background-color: $primary
+        border-radius: 16px
+        padding: 40px
+        display: flex
+        grid-gap: 46px
+    &__content
+        max-width: 512px
+        width: 100%
+        color: #fff
+    &__text p:not(:last-child)
+        margin-bottom: 16px
+    &__items
+        max-width: 552px
+        width: 100%
+    &-item
+        background-color: #fff
+        padding: 20px 20px 20px 20px
+        border-radius: 8px
+        position: relative
+        display: grid
+        grid-template-columns: 9px 1fr
+        align-items: center
+        grid-gap: 20px
+        width: 100%
+        &:not(:last-child)
+            margin-bottom: 5px
+        &::before
+            content: ''
+            display: inline-block
+            width: 9px
+            height: 9px
+            border-radius: 50%
+            background-color: $success
+
+.footer
+    padding-top: 30px
+    background-color: #fff
+    &-top
+        padding-bottom: 50px
+    &-logo
+        margin-bottom: 10px
+        max-width: 258px
+        width: 100%
+        margin-right: 48px
+    &__inner
+        display: flex
+        justify-content: space-between
+    &-contacts
+        max-width: 549px
+        width: 100%
+        margin-right: 59px
+    &-col__title
+        color: $primary
+        display: flex
+        align-items: center
+        grid-gap: 5px
+    &-item:not(:last-child)
+        margin-bottom: 15px
+    &-box
+        display: flex
+        align-items: center
+        grid-gap: 10px
+        margin-bottom: 8px
+    &-item__sublink
+        padding-left: 34px
+    &__items:not(:last-child)
+        margin-bottom: 15px
+
+.footer-nav-item
+    &:not(:last-child)
+        margin-bottom: 40px
+    li
+        font-weight: 600
+    li:not(:last-child)
+        margin-bottom: 10px
+
+.footer-bottom
+    border-top: 1px solid #6C808F
+    background-color: #EDF1F4
+    padding: 15px 0
+    &__inner
+        align-items: center
+    .footer-link
+        font-weight: 600
+
+.footer-col-left
+    display: flex
+    align-items: center
+    grid-gap: 60px
+
+.madein a
+    display: grid
+    text-align: right
+    grid-gap: 5px
+    
+@import catalog
 @import media

@@ -59,6 +59,7 @@ function fix_svg_mime_type($data, $file, $filename, $mimes, $real_mime = '')
 
 // Global ACF Options Page
 include("includes/global/options.php");
+include("includes/global/theme-functions.php");
 
 // document title 
 add_filter('document_title', 'wp_kama_document_title_filter');
@@ -84,17 +85,18 @@ function wp_kama_document_title_filter($title)
 /**
  * Load WooCommerce compatibility file.
  */
-// if (class_exists('WooCommerce')) {
-//     require get_template_directory() . '/includes/woocommerce.php';
-//     require get_template_directory() . '/woocommerce/inc/wc-functionc-mini-cart.php';
-//     require get_template_directory() . '/woocommerce/inc/wc-functions-remove.php';
-//     require get_template_directory() . '/woocommerce/inc/wc-functions-archive.php';
-//     require get_template_directory() . '/woocommerce/inc/wc-functions-single.php';
-//     require get_template_directory() . '/woocommerce/inc/wc-functions-cart.php';
-//     require get_template_directory() . '/woocommerce/inc/wc-functions-checkout.php';
-//     // require get_template_directory() . '/woocommerce/includes/wc_functionc_cart.php';
-//     // require get_template_directory() . '/woocommerce/includes/wc-function-checkout.php';
-// }
+if (class_exists('WooCommerce')) {
+    //     require get_template_directory() . '/includes/woocommerce.php';
+    require get_template_directory() . '/woocommerce/inc/wc-functionc-mini-cart.php';
+    require get_template_directory() . '/woocommerce/inc/zn-woocommerce-init.php';
+    //     require get_template_directory() . '/woocommerce/inc/wc-functions-remove.php';
+    require get_template_directory() . '/woocommerce/inc/wc-functions-archive.php';
+    //     require get_template_directory() . '/woocommerce/inc/wc-functions-single.php';
+    //     require get_template_directory() . '/woocommerce/inc/wc-functions-cart.php';
+    //     require get_template_directory() . '/woocommerce/inc/wc-functions-checkout.php';
+    //     // require get_template_directory() . '/woocommerce/includes/wc_functionc_cart.php';
+    //     // require get_template_directory() . '/woocommerce/includes/wc-function-checkout.php';
+}
 
 
 /**

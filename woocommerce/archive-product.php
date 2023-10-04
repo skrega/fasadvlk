@@ -31,7 +31,7 @@ do_action( 'woocommerce_before_main_content' );
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<h1 class="woocommerce-products-header__title page-title title mb-4"><?php woocommerce_page_title(); ?></h1>
 	<?php endif; ?>
 
 	<?php
@@ -55,7 +55,6 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
 	do_action( 'woocommerce_before_shop_loop' );
-
 	woocommerce_product_loop_start();
 
 	if ( wc_get_loop_prop( 'total' ) ) {

@@ -22,22 +22,22 @@ if (!defined('ABSPATH')) {
 
 global $product;
 
-// if (!has_filter('woocommerce_variable_price_html', 'hide_pod_zakaz_price')) {
-// 	add_filter('woocommerce_variable_price_html', 'hide_pod_zakaz_price', 999, 2);
-// }
+$default_city = get_default_city('price');
+if (!has_filter('woocommerce_variable_price_html', 'hide_pod_zakaz_price')) {
+	add_filter('woocommerce_variable_price_html', 'hide_pod_zakaz_price', 999, 2);
+}
 ?>
 
-<?php if ($price_html = $product->get_price_html()) : ?>
-	<span class="price"><?php echo $price_html; ?></span>
-<?php endif; ?>
+<?php
 
-
-<!-- <?php
-
-if (/*( ( $default_city === 'vladivostok' ) && product_is_panel( $product->get_id() )) ||*/(1 === (int)$product->get_price())) : ?>
-	<span class="price"><?php echo EMPTY_PRICE_STRING; ?></span>
+if ((1 === (int)$product->get_price()) || $product->get_price() == 0) : ?>
+	<span class="price no-price"><?php echo EMPTY_PRICE_STRING; ?></span>
 	<?php else :
 	if ($price_html = $product->get_price_html()) : ?>
 		<span class="price"><?php echo $price_html; ?></span>
 <?php endif;
-endif; ?> -->
+endif;
+?>
+<!-- <?php if ($price_html = $product->get_price_html()) : ?>
+	<span class="price"><?php echo $price_html; ?></span>
+<?php endif; ?> -->

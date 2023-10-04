@@ -120,7 +120,14 @@ Template Post Type: post, page
                             <div class="home-catalog-item__img">
                                 <img src="<?php echo $thumbnail_image_url; ?>" alt="">
                             </div>
-                            <h5 class="home-catalog-item__name"><?php echo $category->name; ?></h5>
+                            <div class="home-catalog-item__footer">
+                                <h5 class="home-catalog-item__name">
+                                    <?php echo $category->name; ?>
+                                </h5>
+                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.5 1.5L8.5 6.5L3.5 11.5" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
                         </a>
                     <?php } ?>
                 </div>
@@ -132,9 +139,17 @@ Template Post Type: post, page
                             <div class="home-catalog-item__img">
                                 <img src="<?php echo $thumbnail_image_url; ?>" alt="">
                             </div>
-                            <h5 class="home-catalog-item__name"><?php echo $category->name; ?></h5>
+                            <div class="home-catalog-item__footer">
+                                <h5 class="home-catalog-item__name">
+                                    <?php echo $category->name; ?>
+                                </h5>
+                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.5 1.5L8.5 6.5L3.5 11.5" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
                         </a>
-                    <?php } ?>
+                    <?php }
+                    wp_reset_postdata(); ?>
                 </div>
                 <?php foreach ($woo_categories as $woo_cat) { ?>
                     <div class="home-catalog__items tab-item" id="<?php echo $woo_cat->term_id; ?>" style="display: none;">
@@ -170,43 +185,63 @@ Template Post Type: post, page
                                 $product_attributes = wc_get_product($product->ID)->get_attributes();
 
                                 // Переберите все атрибуты товара
+
                                 foreach ($product_attributes as $attribute) {
                                     // Проверьте, существует ли атрибут в массиве атрибутов
                                     if (!isset($attributes[$attribute->get_name()])) {
                                         // Если атрибут не существует, добавьте его в массив атрибутов
                                         $attributes[$attribute->get_name()] = array();
                                     }
-
                                     // Получите значения атрибута
                                     $attribute_values = $attribute->get_terms();
-
                                     // Переберите все значения атрибута и добавьте их в массив атрибутов
                                     foreach ($attribute_values as $value) {
-                                        $attributes[$attribute->get_name()][] = $value->name;
+                                        $attributes[$attribute->get_name()][$value->term_id] = $value->name;
                                     }
                                 }
                             }
+                            $exclude_attributes = array('pa_city', 'pa_dopolnitelnaya-zashhita', 'pa_dopolnitelno', 'pa_series', 'pa_vid');
 
-                            $exclude_attributes = array('pa_city', 'pa_dopolnitelnaya-zashhita', 'pa_dopolnitelno',  'pa_tolshhina', 'pa_series', 'pa_tsvet', 'pa_vid');
-                            // Выведите список атрибутов и их значений
                             $arry_attr = [];
                             foreach ($attributes as $attribute_name => $attribute_values) {
+
                                 if (!in_array($attribute_name, $exclude_attributes)) {
-                                    // echo '<h4>' . $attribute_name . '</h4>';
-                                    // echo '<ul>';
-                                    foreach ($attribute_values as $value) {
-                                        array_push($arry_attr, $value);
-                                        // echo '<li>' . $value . '</li>';
+                                    $values = isset($arry_attr[$attribute_name]) ? $arry_attr[$attribute_name] : [];
+                                    foreach ($attribute_values as $key => $value) {
+                                        if (!in_array($value, $values)) {
+                                            $values[$key][] = $value;
+                                            // echo  $key . '</br>';
+                                        }
                                     }
-                                    // echo '</ul>';
-                                    echo '<pre>';
-                                    $distinct = array_unique($arry_attr);
-                                    print_r($distinct);
-                                    echo '</pre>';
+                                    $arry_attr[$attribute_name] = $values;
                                 }
                             }
-                        }
-                        ?>
+                            foreach ($arry_attr as $attr) {
+                                foreach ($attr as $key => $value) {
+                                    $attr_img = get_term_meta($key, 'attr_img', true);
+                                    if ($attr_img != '') {
+                                        $img = wp_get_attachment_image($attr_img, 'full');
+                                    } else {
+                                        $img = wc_placeholder_img('full', '');
+                                    } ?>
+                                    <a class="home-catalog-item" href="#">
+                                        <div class="home-catalog-item__img">
+                                            <?php echo $img; ?>
+                                        </div>
+                                        <div class="home-catalog-item__footer">
+                                            <h5 class="home-catalog-item__name">
+                                                <?php
+                                                echo $value[0]; ?>
+                                            </h5>
+                                            <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M3.5 1.5L8.5 6.5L3.5 11.5" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                                            </svg>
+                                        </div>
+                                    </a><?php
+
+                                    }
+                                }
+                            } ?>
                     </div>
                 <?php } ?>
             </div>
@@ -256,37 +291,52 @@ Template Post Type: post, page
 </div>
 <div class="popular section">
     <div class="container">
-        <div class="block-head">
-            <h2 class="home-catalog__title title"></h2>
+        <div class="block-head mb-4">
+            <h2 class="home-catalog__title title">Популярные товары</h2>
             <a class="home-catalog__link btn-sm btn outline" href="">Смотреть все в категории</a>
         </div>
         <div class="popular__inner">
             <div class="tabs-block">
-                <div class="popular-head">
+                <div class="popular-head block-head">
                     <div class="popular-tab tabs">
-                        <span class="tab active" data-id="1">Хит</span>
-                        <span class="tab" data-id="2">в наличии</span>
-                        <span class="tab" data-id="3">под заказ</span>
+                        <span class="tab tab-btn active" data-id="3" data-swiper="0">Хит</span>
+                        <span class="tab tab-btn" data-id="4" data-swiper="1">в наличии</span>
+                        <span class="tab tab-btn" data-id="5" data-swiper="2">под заказ</span>
                     </div>
-                    <div class="popular-buttons">
-                        <div class="popular-btn-prev swiper-button-prev swiper-btn"></div>
-                        <div class="popular-btn-next swiper-button-next swiper-btn"></div>
+                    <div class="popular-buttons swiper-buttons">
+                        <div class="popular-btn-prev swiper-button-prev swiper-btn">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.5 1L3.5 6L8.5 11" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="popular-btn-next swiper-button-next swiper-btn">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.5 1L8.5 6L3.5 11" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 <div class="popular-tab_content tab_content">
-                    <div class="tab-item active-tab" id="1">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">Slide 1</div>
-                            </div>
+                    <div class="tab-item active-tab" id="3">
+                        <?php echo do_shortcode('[products limit="10" columns="4" class="swiper products-swiper" visibility="featured" ]'); ?>
+                    </div>
+                    <div class="tab-item" id="4" style="display: none;">
+                        <div class="swiper products-swiper">
+                            <?php echo do_shortcode('[custom_products type="variable" limit="40"]'); ?>
                         </div>
-                        <div class="tab-item" id="2" style="display: none;"></div>
-                        <div class="tab-item" id="3" style="display: none;"></div>
+                    </div>
+                    <div class="tab-item" id="5" style="display: none;">
+                        <div class="swiper products-swiper">
+                            <?php echo do_shortcode('[custom_products_out_of_stock type="variable" limit="13"]'); ?>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <section class="about section">
     <div class="container">
@@ -308,26 +358,67 @@ Template Post Type: post, page
     <div class="container">
         <h3 class="title gallary__title mb-4">Галерея выполненных проектов</h3>
         <div class="tabs-block">
-            <div class="home-gallary-head">
+            <div class="block-head mb-2">
                 <div class="tabs gallary-tabs">
-                    <span class="tab active tab-btn" data-id="1">Фасады</span>
-                    <span class="tab tab-btn" data-id="2">Террасная доска</span>
+                    <?php
+                    $portfolio_types = get_categories([
+                        'taxonomy'     => 'portfolio-types',
+                        'type'         => 'portfolio',
+                        'hide_empty'   => 1,
+                    ]);
+                    if ($portfolio_types) {
+                        foreach ($portfolio_types as $key => $type) { ?>
+                            <span class="tab tab-btn <?php echo ($key == 0) ? 'active' : ''; ?>" data-id="<?php echo $type->term_id; ?>"><?php echo $type->name; ?></span>
+                    <?php }
+                    } ?>
                 </div>
-                <div class="gallary-buttons">
-                    <div class="gallary-btn-prev swiper-button-prev swiper-btn"></div>
-                    <div class="gallary-btn-next swiper-button-next swiper-btn"></div>
-                </div>
-            </div>
-            <div class="tab_content">
-                <div class="tab-item active-tab" id="1">
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">Slide 1</div>
-                        </div>
+                <div class="gallary-buttons swiper-buttons">
+                    <div class="gallary-btn-prev swiper-button-prev swiper-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.5 1L3.5 6L8.5 11" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                        </svg>
                     </div>
-                    <div class="tab-item" id="2" style="display: none;">2</div>
+                    <div class="gallary-btn-next swiper-button-next swiper-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.5 1L8.5 6L3.5 11" stroke="#127FFF" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
                 </div>
             </div>
+            <?php if ($portfolio_types) { ?>
+                <div class="tab_content">
+                    <?php foreach ($portfolio_types as $key => $type) { ?>
+                        <div class="tab-item <?php echo ($key == 0) ? 'active-tab' : ''; ?>" id="<?php echo $type->term_id; ?>">
+                            <div class="portfolio-swiper swiper">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    $args = array(
+                                        'post_type' => 'portfolio',
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => 'portfolio-types',
+                                                'terms'    => array($type->term_id)
+                                            )
+                                        )
+                                    );
+                                    $portfolio = new WP_Query($args);
+                                    while ($portfolio->have_posts()) {
+                                        $portfolio->the_post(); ?>
+                                        <div class="swiper-slide portfolio-item">
+                                            <a data-fancybox data-src="<?php the_post_thumbnail_url(); ?>">
+                                                <img class="portfolio-item__img" src="<?php the_post_thumbnail_url(); ?>" alt="">
+                                            </a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    wp_reset_postdata(); ?>
+                </div>
+            <?php } ?>
         </div>
     </div>
-    <?php get_footer(); ?>
+</div>
+<?php get_footer(); ?>

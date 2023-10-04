@@ -1,0 +1,14 @@
+<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon">
+<g id="cart">
+<path id="Path" d="M12.5005 4H8.5H3.875L5.41 11.246C5.621 12.244 6.55 12.923 7.566 12.822L14.382 12.14C15.222 12.056 15.918 11.454 16.123 10.635L16.5961 8.74263" stroke="#127FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_2" d="M3.874 4L3.224 1H1.5" stroke="#127FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_3" d="M15.1074 16.2668C14.9054 16.2668 14.7414 16.4308 14.7434 16.6328C14.7434 16.8348 14.9074 16.9988 15.1094 16.9988C15.3114 16.9988 15.4754 16.8348 15.4754 16.6328C15.4744 16.4308 15.3104 16.2668 15.1074 16.2668" stroke="#127FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Path_4" d="M6.69382 16.2663C6.49182 16.2663 6.32782 16.4303 6.32982 16.6323C6.32782 16.8353 6.49282 16.9993 6.69482 16.9993C6.89682 16.9993 7.06082 16.8353 7.06082 16.6333C7.06082 16.4303 6.89682 16.2663 6.69382 16.2663" stroke="#127FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="plus">
+<path id="Vector" d="M17 2.25V5.75" stroke="#127FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M18.75 4H15.25" stroke="#127FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

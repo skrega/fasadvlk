@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Product Loop Start
  *
@@ -15,8 +16,13 @@
  * @version     3.3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
+if (is_home() ) {
+	$products_class = 'swiper-wrapper';
+} else {
+	$products_class = '';
+}
 ?>
-<ul class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
+<ul class="products columns-<?php echo esc_attr(wc_get_loop_prop('columns')); ?><?php echo (is_front_page()) ? ' swiper-wrapper' : '' ?>">

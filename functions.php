@@ -4,6 +4,7 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style('fonts-googleapis', 'https://fonts.googleapis.com');
     wp_enqueue_style('fonts-google', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    wp_enqueue_style('style-woo', get_template_directory_uri() . '/woocommerce/assets/css/woocommerce.css?' . time(), array(), null);
     wp_enqueue_style('style-main', get_template_directory_uri() . '/assets/css/style.min.css?' . time(), array(), null);
 
     // wp_deregister_script('jquery');
@@ -87,12 +88,14 @@ function wp_kama_document_title_filter($title)
  */
 if (class_exists('WooCommerce')) {
     //     require get_template_directory() . '/includes/woocommerce.php';
+    require get_template_directory() . '/woocommerce/inc/wc-functions.php';
+    require get_template_directory() . '/woocommerce/inc/wc-remove-functions.php';
     require get_template_directory() . '/woocommerce/inc/wc-functionc-mini-cart.php';
     require get_template_directory() . '/woocommerce/inc/zn-woocommerce-init.php';
     //     require get_template_directory() . '/woocommerce/inc/wc-functions-remove.php';
     require get_template_directory() . '/woocommerce/inc/wc-functions-archive.php';
-    //     require get_template_directory() . '/woocommerce/inc/wc-functions-single.php';
-    //     require get_template_directory() . '/woocommerce/inc/wc-functions-cart.php';
+    require get_template_directory() . '/woocommerce/inc/wc-functions-single-product.php';
+        require get_template_directory() . '/woocommerce/inc/wc-functions-checkout-cart.php';
     //     require get_template_directory() . '/woocommerce/inc/wc-functions-checkout.php';
     //     // require get_template_directory() . '/woocommerce/includes/wc_functionc_cart.php';
     //     // require get_template_directory() . '/woocommerce/includes/wc-function-checkout.php';
@@ -103,15 +106,15 @@ if (class_exists('WooCommerce')) {
  * Добавление нового виджета Foo_Widget.
  */
 // Registration sidebar
-// register_sidebar(array(
-//     'name' => __('Виджет фильтра', 'refkings'),
-//     'id' => 'filter-widget',
-//     'description' => __('Область описания сайдбара', 'twentytwenty'),
-//     'before_widget' => '<li id="%1$s">',
-//     'after_widget' => '</li>',
-//     'before_title' => '<h3>',
-//     'after_title' => '</h3>',
-// ));
+register_sidebar(array(
+    'name' => __('Виджет фильтра', 'Фасад'),
+    'id' => 'filter-widget',
+    'description' => __('Область описания сайдбара', 'twentytwenty'),
+    'before_widget' => '<li id="%1$s">',
+    'after_widget' => '</li>',
+    'before_title' => '<h3>',
+    'after_title' => '</h3>',
+));
 
 //Удаляем category из УРЛа категорий
 
@@ -120,3 +123,11 @@ if (class_exists('WooCommerce')) {
 // 	return $cat_url;
 // }
 // add_filter('category_link', 'true_remove_category_from_category', 1, 1);
+
+
+add_action('wp_enqueue_scripts', 'true_no_contact_form_css_and_js', 999);
+
+function true_no_contact_form_css_and_js()
+{
+    wp_dequeue_style('woocommerce-general');
+}

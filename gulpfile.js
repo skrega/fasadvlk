@@ -41,9 +41,11 @@ function images() {
 function scripts() {
   return src([
     'node_modules/jquery/dist/jquery.js',
+    'node_modules/mixitup/dist/mixitup.min.js',
     'node_modules/swiper/swiper-bundle.min.js',
     'node_modules/@fancyapps/ui/dist/fancybox.umd.js',
     'assets/js/libs/phoneinput.js',
+    'assets/js/libs/woo-ajax-add-to-cart.js',
     'assets/js/main.js'
   ])
     .pipe(concat('main.min.js'))

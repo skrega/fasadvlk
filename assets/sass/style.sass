@@ -104,6 +104,9 @@
         height: 120px
         border-radius: 50%
         overflow: hidden
+    &__img img
+        width: 100%
+        height: 100%
     &__name
         font-weight: 600
         line-height: 120%
@@ -113,10 +116,13 @@
 .home-catalog__inner
     display: grid
     grid-template-columns: 288px 1fr
+    grid-gap: 16px
+    align-items: flex-start
 .home-catalog-sidebar
     padding: 20px
     background-color: #fff
     border-radius: 16px
+
 .home-catalog-sidebar__item
     padding: 15px
     border-radius: 8px
@@ -127,6 +133,35 @@
     &.active
         background-color: $primary
         color: #fff
+
+.home-catalog__items
+    display: grid
+    grid-template-columns: repeat(3,1fr)
+    grid-gap: 16px
+
+.home-catalog-item
+    border-radius: 16px
+    overflow: hidden
+    &:hover .home-catalog-item__footer
+        background-color: $primary
+        color: #fff
+    &:hover .home-catalog-item__footer svg path
+        stroke: #fff
+    &__img
+        height: 258px
+    &__img img
+        width: 100%
+        height: 100%
+    &__footer
+        padding: 20px
+        color: $primary
+        background-color: #fff
+        display: flex
+        align-items: center
+        justify-content: space-between
+        transition: all .3s
+    &__footer svg path
+        transition: stroke .3s
 
 .services
     &__inner
@@ -155,6 +190,15 @@
     padding: 30px 20px 20px
     border-radius: 8px
     background-color: #fff
+
+.popular
+    &-head
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 20px
+    &__inner
+        position: relative
 
 .about
     &__inner
@@ -191,6 +235,18 @@
             height: 9px
             border-radius: 50%
             background-color: $success
+
+.portfolio-item
+    height: 300px
+    border-radius: $borderCard
+    overflow: hidden
+    &__img
+        height: 100%
+    a
+        cursor: pointer
+        display: inline-block
+        width: 100%
+        height: 100%
 
 .footer
     padding-top: 30px
@@ -252,6 +308,11 @@
     display: grid
     text-align: right
     grid-gap: 5px
+
+.popup
+    border-radius: $borderCard
     
-@import catalog
+@import shop/catalog
+@import shop/single
+@import posts
 @import media

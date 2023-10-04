@@ -160,65 +160,65 @@
 //     color: #EB2452
 
 // /** filter start **/
-// .wpc-term-item-content-wrapper input[type="checkbox"]
-//     position: absolute
-//     z-index: -1
-//     opacity: 0
-//     // для элемента label, связанного с .custom-checkbox 
-//     &+label
-//         display: inline-flex
-//         align-items: flex-start
-//         user-select: none
-//         text-transform: lowercase
-//     // создание в label псевдоэлемента before со следующими стилями 
-//     &+label::before
-//         content: ''
-//         display: inline-block
-//         width: 16px
-//         height: 16px
-//         margin-top: 1px
-//         flex-shrink: 0
-//         flex-grow: 0
-//         border: 1px solid #010719
-//         border-radius: 2px
-//         margin-right: 0.5em
-//         background-repeat: no-repeat
-//         background-position: center center
-//         background-size: contain
-//         transition: all .3s
+.wpc-term-item-content-wrapper input[type="checkbox"]
+    position: absolute
+    z-index: -1
+    opacity: 0
+    // для элемента label, связанного с .custom-checkbox 
+    &+label
+        display: inline-flex
+        align-items: flex-start
+        user-select: none
+        text-transform: lowercase
+    // создание в label псевдоэлемента before со следующими стилями 
+    &+label::before
+        content: ''
+        display: inline-block
+        width: 16px
+        height: 16px
+        margin-top: 1px
+        flex-shrink: 0
+        flex-grow: 0
+        border: 1px solid $primary
+        border-radius: 4px
+        margin-right: 0.5em
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: contain
+        transition: all .3s
 
-//     // стили при наведении курсора на checkbox 
+    // стили при наведении курсора на checkbox 
 
-//     &:not(:disabled):not(:checked)+label:hover::before
-//         border-color: #b3d7ff
+    &:not(:disabled):not(:checked)+label:hover::before
+        border-color: #b3d7ff
 
-//     // стили для активного чекбокса (при нажатии на него) 
+    // стили для активного чекбокса (при нажатии на него) 
 
-//     &:not(:disabled):active+label::before
-//         background-color: #b3d7ff
-//         border-color: #b3d7ff
+    &:not(:disabled):active+label::before
+        background-color: #b3d7ff
+        border-color: #b3d7ff
 
-//     // стили для чекбокса, находящегося в фокусе 
+    // стили для чекбокса, находящегося в фокусе 
 
-//     &:focus+label::before
-//         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+    &:focus+label::before
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
 
-//     // стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked 
+    // стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked 
 
-//     &:focus:not(:checked)+label::before
-//         border-color: #80bdff
+    &:focus:not(:checked)+label::before
+        border-color: #80bdff
 
-//     // стили для чекбокса, находящегося в состоянии checked 
+    // стили для чекбокса, находящегося в состоянии checked 
 
-//     &:checked+label::before
-//         border-color: #0b76ef
-//         background-color: #0b76ef
-//         background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4.3L3.68775 7L9 1' stroke='white' stroke-linecap='round'/%3E%3C/svg%3E")
+    &:checked+label::before
+        border-color: #0b76ef
+        background-color: #0b76ef
+        background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4.3L3.68775 7L9 1' stroke='white' stroke-linecap='round'/%3E%3C/svg%3E")
 
-//     // стили для чекбокса, находящегося в состоянии disabled 
+    // стили для чекбокса, находящегося в состоянии disabled 
 
-//     &:disabled+label::before
-//         background-color: #e9ecef
+    &:disabled+label::before
+        background-color: #e9ecef
 
 // .widget-area li.wpc-term-item label, .wpc-filters-widget-main-wrapper li.wpc-term-item label
 //     padding-left: 0 !important
@@ -226,55 +226,57 @@
 // #top .widget ul.wpc-filters-ul-list, .widget-area ul.wpc-filters-ul-list, .wpc-filters-widget-main-wrapper ul.wpc-filters-ul-list
 //     padding: 0 !important
 
-// .wpc-term-item-content-wrapper input[type="radio"]
-//     position: absolute
-//     z-index: -1
-//     opacity: 0
-//     &+label
-//         display: inline-flex
-//         align-items: center
-//         user-select: none
-//     &+label::after
-//         position: absolute
-//         content: ''
-//         width: 8px
-//         height: 8px
-//         border-radius: 50%
-//         top: 6px
-//         left: 4px
-//         background-color: $primary
-//         transform: scale(0)
-//         transition: all .3s
-//     &+label::before
-//         position: relative
-//         content: ''
-//         display: inline-block
-//         width: 16px
-//         height: 16px
-//         flex-shrink: 0
-//         flex-grow: 0
-//         border: 1px solid #010719
-//         border-radius: 50%
-//         margin-right: 0.5em
-//     &:not(:disabled):not(:checked)+label:hover::before
-//         border-color: #b3d7ff
+.wpc-term-item-content-wrapper input[type="radio"]
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &+label
+        display: inline-flex
+        align-items: center
+        user-select: none
+    &+label::before
+        position: relative
+        content: ''
+        display: inline-block
+        width: 16px
+        height: 16px
+        flex-shrink: 0
+        flex-grow: 0
+        border: 1px solid $primary
+        border-radius: 50%
+        margin-right: 0.5em
+    &:not(:disabled):not(:checked)+label:hover::before
+        border-color: #b3d7ff
 
-//     &:not(:disabled):active+label::before
-//         background-color: #b3d7ff
-//         border-color: #b3d7ff
+    &:not(:disabled):active+label::before
+        background-color: #b3d7ff
+        border-color: #b3d7ff
 
-//     &:checked+label::after
-//         transform: scale(1)
+    &:checked+label::before
+        background-image: url("data:image/svg+xml,%3Csvg width='8' height='9' viewBox='0 0 8 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='0.5' width='8' height='8' rx='4' fill='%23127FFF'/%3E%3C/svg%3E%0A")
+        background-size: 8px
+        background-repeat: no-repeat
+        background-position: 3px 2px
 
-//     &:focus+label::before
-//         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+    &:focus+label::before
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
 
-//     &:focus:not(:checked)+label::before
-//         border-color: #80bdff
+    &:focus:not(:checked)+label::before
+        border-color: #80bdff
 
-//     &:disabled+label::before
-//         background-color: #e9ecef
+    &:disabled+label::before
+        background-color: #e9ecef
 
+body .wpc-filter-chips-list li.wpc-filter-chip:not(.wpc-chip-reset-all) a
+        background-color: $primary-700
+        color: $primary
+        font-weight: 600
+        border-color: $primary-700 !important
+
+.wpc-chip-remove-icon
+    font-weight: 400
+.wpc-chip-reset-all
+    display: none !important
 // .wpc-filter-title
 //     position: relative
 //     &::before

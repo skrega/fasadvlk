@@ -21,8 +21,7 @@
 
     <?php wp_head(); ?>
 </head>
-
-<body>
+<body <?php body_class(); ?>>
     <?php $header = is_front_page() ? ' transparent' : ''; ?>
     <header class="header<?php echo $header; ?>">
         <div class="header-top">

@@ -13,12 +13,20 @@
         border-color: $primary
         background-color: $primary
         color: #fff
+    .button:hover
+        border-color: $primary
+        background-color: $primary
+        color: #fff
+    .button svg path
+        transition: stroke .3s
+    .button:hover svg path
+        stroke: #fff
 
-    .link:hover 
+    .link:hover
         color: $primary-600
 
-    .footer-link:hover 
-        color: $primary 
+    .footer-link:hover
+        color: $primary
 
     .navbar-item
         &:hover
@@ -46,5 +54,21 @@
     .footer-nav-item a:hover
         color: $primary
 
-    .madein a:hover 
+    .madein a:hover
         opacity: 0.6
+
+    .view-mode-btn:hover
+        background-color: $primary
+    .view-mode-btn:hover svg rect
+        fill: #fff
+
+    .tab-btn:not(.active):hover
+        background-color: $primary-600
+        color: #fff
+
+    .woocommerce div.product .woocommerce-tabs ul.tabs li:not(.active) a:hover
+        background-color: $primary-600
+        color: #fff
+
+    li.product a.add-to-cart-button:hover
+        background-image: url("data:image/svg+xml,%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.813 7H10.8125H6.1875L7.7225 14.246C7.9335 15.244 8.8625 15.923 9.8785 15.822L16.6945 15.14C17.5345 15.056 18.2305 14.454 18.4355 13.635L18.9086 11.7426' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6.1865 7L5.5365 4H3.8125' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17.4199 19.2668C17.2179 19.2668 17.0539 19.4308 17.0559 19.6328C17.0559 19.8348 17.2199 19.9988 17.4219 19.9988C17.6239 19.9988 17.7879 19.8348 17.7879 19.6328C17.7869 19.4308 17.6229 19.2668 17.4199 19.2668' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M9.00632 19.2663C8.80432 19.2663 8.64032 19.4303 8.64232 19.6323C8.64032 19.8353 8.80532 19.9993 9.00732 19.9993C9.20932 19.9993 9.37332 19.8353 9.37332 19.6333C9.37332 19.4303 9.20932 19.2663 9.00632 19.2663' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.3125 5.25V8.75' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21.0625 7H17.5625' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A")
